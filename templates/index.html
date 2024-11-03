@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+<div class="text-center">
+    <h2>Nhận diện biển báo giao thông</h2>
+    <span>Chọn một hình ảnh và nhấn nút "Predict!" để nhận diện biển báo giao thông</span>
+    <form id="upload-file" class='mb-0 mt-2' method="post" enctype="multipart/form-data">
+        <label for="imageUpload" class="upload-label"> Chọn hình ảnh </label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+    </form>
+</div>
+<div class='content-box'>
+    <div class='panda-2'></div>
+    <div class='content'>
+        <div class="image-section">
+          <div class="img-preview">
+            <div id="imagePreview"></div>
+          </div>
+          <div class='text-center'>
+            <button type="button" class="btn btn-primary btn-lg" id="btn-predict">Nhận diện</button>
+          </div>
+        </div>
+        <div class='info'>
+            <div class='info-header'>Thông tin biển báo giao thông nhận diện được</div>
+            <div class="loader" style="display: none"></div>
+            <div id="result">
+                <span> </span>
+            </div>
+        </div>
+      </div>
+</div>
+
+
+{% endblock %}

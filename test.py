@@ -76,7 +76,6 @@ def getCalssName(classNo):
     elif classNo == 42: return 'End of no passing by vechiles over 3.5 metric tons'
 
 def getLargestContour(img, imgContour):
-    
     img = cv2.GaussianBlur(img, (7, 7), 1)
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img = cv2.Canny(imgGray, 100, 180)

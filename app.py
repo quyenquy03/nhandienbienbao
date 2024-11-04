@@ -31,6 +31,7 @@ def preprocessing(img):
     img = equalize(img)
     img = img/255
     return img
+
 def getClassName(classNo):
     signs = {
         0: {
@@ -249,10 +250,8 @@ def getClassName(classNo):
             "description": "Biển báo này thông báo rằng đã hết cấm vượt đối với các phương tiện có trọng tải trên 3,5 tấn."
         }
     }
-
     # Trả về object gồm tên, loại và mô tả, hoặc giá trị mặc định nếu không tìm thấy
     return signs.get(classNo, {"name": "Biển báo không xác định", "type": "Không xác định", "description": "Biển báo không xác định"})
-
 
 def model_predict(img_path, model):
     print(img_path)
@@ -265,7 +264,7 @@ def model_predict(img_path, model):
     img = preprocessing(img)
     cv2.imshow("Processed Image", img)
     img = img.reshape(1, 32, 32, 1)
-    
+
     # PREDICT IMAGE
     predictions = model.predict(img)
     print(predictions)
@@ -278,7 +277,6 @@ def model_predict(img_path, model):
 def index():
     # Main page
     return render_template('index.html')
-
 
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():

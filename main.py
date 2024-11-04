@@ -12,7 +12,7 @@ import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 path = "Dataset" 
 labelFile = 'labels.csv' 
-batch_size_val=32 
+batch_size_val=32
 epochs_val=10
 imageDimesions = (32,32,3)
 testRatio = 0.2    
@@ -38,10 +38,9 @@ for x in range(len(myList)):
 print(" ")
 images = np.array(images)
 classNo = np.array(classNo)
- 
+
 X_train, X_test, y_train, y_test = train_test_split(images, classNo, test_size=testRatio)
 X_train, X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size=validationRatio)
- 
 
 print("Data Shapes")
 print("Train",end = "");print(X_train.shape,y_train.shape)
@@ -115,7 +114,6 @@ def myModel():
  
 model = myModel()
 print(model.summary())
-# history=model.fit_generator(dataGen.flow(X_train,y_train,batch_size=32),steps_per_epoch=len(X_train)//32,epochs=epochs_val,validation_data=(X_validation,y_validation),shuffle=1)
 history = model.fit(dataGen.flow(X_train, y_train, batch_size=32),
                     steps_per_epoch=len(X_train) // 32,
                     epochs=epochs_val,
@@ -134,7 +132,8 @@ plt.legend(['training','validation'])
 plt.title('Acurracy')
 plt.xlabel('epoch')
 plt.show()
-score =model.evaluate(X_test,y_test,verbose=0)
+
+score = model.evaluate(X_test,y_test,verbose=0)
 print('Test Score:',score[0])
 print('Test Accuracy:',score[1])
  
